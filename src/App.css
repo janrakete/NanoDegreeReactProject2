@@ -1,38 +1,93 @@
-.App {
+.app {
+  font-family: 'Roboto Mono', monospace;
+  font-size:  16px;
+}
+
+.navbar {
+  display: flex;
+  background-color:  black;
+}
+
+.navbar-item {
+  margin:  20px;
+  color:  white;
+}
+
+.navbar-brand {
+  color:  Lime;
+}
+
+.navbar-highlight {
+  background-color:  DeepPink;
+}
+
+.navbar-user {
+  background-color:  grey;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  font-family: 'Roboto Mono', monospace;
+  font-size:  16px;    
+  border-width: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button {
+  padding: 20px;
+  background-color:  black;
+  color:  white;
+  font-weight:  bold;
+  cursor:  pointer;
+  border-color:  lime;
+  font-family: 'Roboto Mono', monospace;
+  font-size:  16px;    
+  border-width: 3px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.row {
+  padding:  20px;
 }
 
-.App-link {
-  color: #61dafb;
+.table {
+  display: table;         
+  width: auto;         
+  margin:  auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+
+.table-cell {
+  float: left;
+  display: table-column;         
+  width: 400px;         
+  border: 3px solid lime;         
+  height: 30px;
+}
+
+.poll-card {
+  border: 3px solid lime;
+  background-color:  grey;         
+  color:  black;
+  padding:  20px;
+}
+
+ .table-head {
+    background-color:  lime;
+    color:  black;
+    font-weight:  bold;    
+ }
+
+a {
+  color:  white;
+  text-decoration: none;
 }

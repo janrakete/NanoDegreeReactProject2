@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+import { React, useEffect } from "react";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import LoadingBar from 'react-redux-loading-bar';
+
+import NavBar from "./components/NavBar";
+import Login from "./components/Login";
+import Leaderboard from "./components/Leaderboard";
+import PollNew from "./components/PollNew";
+import FourZeroFour from "./components/FourZeroFour";
+import Dashboard from "./components/Dashboard";
+
+import { InitialDataGet } from "./actions/InitialData";
+
+function App({ dispatch, UserLoginLogout }) {
+
+  useEffect(() => {
+      dispatch(InitialDataGet());
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <BrowserRouter>
+        <LoadingBar />
+        <div className="app">
+        { 
+          (
+            UserLoginLogout == null ? (
+            <Login />
+            ) : (
+            <div>
+              <NavBar UserLoginLogout={UserLoginLogout} />
+              <Routes>
+                  <Route path="/" exact element={<Dashboard />} />
+                  <Route path="/add" element={<PollNew />} />
+                  <Route path="/leaderboard" element={<Leaderboard />} />
+                  <Route element={FourZeroFour} />
+              </Routes>
+            </div>
+          )
+        )}
+        </div>
+      </BrowserRouter>
+    )
+  }
+
+function mapStateToProps({ UserLoginLogout}) {
+  return {
+    UserLoginLogout,
+  };
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
