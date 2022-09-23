@@ -17,8 +17,17 @@
   color:  Lime;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .navbar-highlight {
   background-color:  DeepPink;
+}
+
+.highlight {
+  background-color:  DeepPink;
+  color:  white;
 }
 
 .navbar-user {

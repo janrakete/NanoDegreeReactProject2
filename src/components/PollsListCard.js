@@ -1,26 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-function PollsListCard({ pollAuthor, props }) {
+function PollsListCard({ Users, PollAuthor, props }) {
   return (
 		<div className="container">
 			<div className="row">
 				<div className="poll-card">
 
 					<h3>Would You Rather ...</h3>
-					by <img src={pollAuthor.avatarURL} width="25" valign="middle"/> {pollAuthor.id} ({pollAuthor.name})
+					by <img src={PollAuthor.avatarURL} width="25" valign="middle" alt="img" /> {PollAuthor.id} ({PollAuthor.name})
 					<br /><br />
-					<button className="button">View poll</button>
+					<Link to={"questions/" + props.poll.id}>
+						<button className="button">View poll</button>
+					</Link>
 				</div>
 			</div>
 		</div>    
     )
   }
 
-function mapStateToProps({ UsersReceive }, props) {
+function mapStateToProps({ Users }, props) {
 
 	return {
-		pollAuthor : UsersReceive[props.poll.author],
+		PollAuthor : Users[props.poll.author],
 		props
 	};
 }

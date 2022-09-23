@@ -35,7 +35,7 @@ export function PollAddQuestionHandle(option1, option2) {
     return APIPollQuestionAdd({optionOneText: option1, optionTwoText: option2, author: UserLoginLogout.id}).then(
       (question) => {
         dispatch(PollsQuestionAdd(question));
-        dispatch(UserAddQuestionTo(UserLoginLogout.id, question.id));
+        dispatch(UserAddQuestionTo(question.author, question.id));
       }
     );
   };

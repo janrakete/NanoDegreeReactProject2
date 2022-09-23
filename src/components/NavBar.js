@@ -34,7 +34,7 @@ function NavBar({ dispatch, UserLoginLogout }) {
 				</div>
 		</div>
 		<div className="navbar-user">
-			<div className="navbar-item">Logged in as: <img src={UserLoginLogout.avatarURL} width="25" valign="middle"/> {UserLoginLogout.id}</div>
+			<div className="navbar-item">Logged in as: <img src={UserLoginLogout.avatarURL} width="25" valign="middle" alt="img" /> {UserLoginLogout.id}</div>
 			<div className="navbar-item navbar-highlight"><a href="#" onClick={LogoutHandleSubmit}>Logout</a></div>
 		</div>  
 	</div>    

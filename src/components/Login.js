@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { UserLoginHandle } from "../actions/UserLoginLogout";
 
-function Login({ dispatch, UserLoginLogout, UsersReceive }) {
+function Login({ dispatch, UserLoginLogout, Users }) {
 
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function Login({ dispatch, UserLoginLogout, UsersReceive }) {
     dispatch(UserLoginHandle(event.target.elements.username.value));
   };
 
-	const disabled = UsersReceive != null ? "" : "disabled";
+	const disabled = Users != null ? "" : "disabled";
 
   return (
 		<div className="container">
@@ -39,9 +39,9 @@ function Login({ dispatch, UserLoginLogout, UsersReceive }) {
     )
   }
 
-const mapStateToProps = ({ UserLoginLogout, UsersReceive }) => ({
+const mapStateToProps = ({ UserLoginLogout, Users }) => ({
   UserLoginLogout,
-  UsersReceive
+  Users
 });
 
 export default connect(mapStateToProps)(Login);

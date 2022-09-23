@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import PollsListCard from "./PollsListCard";
 
-function PollsList({ Polls, UserLoginLogout, props }) {
+function PollsList({ Polls, UserLoginLogout, props}) {
 	return (
 		<div className="container">
 			{Polls.map((poll) => (

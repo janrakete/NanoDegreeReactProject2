@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-function Leaderboard({ UsersReceive }) {
+function Leaderboard({ Users }) {
 
   return (
 		<div className="container">
@@ -20,10 +20,10 @@ function Leaderboard({ UsersReceive }) {
 					Answered questions
 					</div>
 				</div>
- 				{UsersReceive.map((user) => (
+ 				{Users.map((user) => (
 					<div className="table-row" key={user.id}>
 						<div className="table-cell">
-						<img src={user.avatarURL} width="25" valign="middle"/> {user.id} ({user.name})
+						<img src={user.avatarURL} width="25" valign="middle" alt="img" /> {user.id} ({user.name})
 						</div>
 						<div className="table-cell">
 							{user.questions.length}
@@ -38,11 +38,9 @@ function Leaderboard({ UsersReceive }) {
     )
   }
 
-function mapStateToProps({ UsersReceive }) {
+function mapStateToProps({ Users }) {
   return {
-    UsersReceive: Object.values(UsersReceive).sort(
-    (a, b) => Object.keys(b.answers).length - Object.keys(a.answers).length
-  ),
+    Users: Object.values(Users).sort((a, b) => Object.keys(b.answers).length - Object.keys(a.answers).length),
   };
 }
 

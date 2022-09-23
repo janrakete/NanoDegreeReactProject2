@@ -7,11 +7,13 @@ export default function Polls(state = null, action) {
 			...state,
 			...action.questions,
 			};
+
 		case POLL_QUESTION_ADD:
 			return {
 			...state,
 			[action.question.id]: action.question,
 			};
+			
 		case POLL_QUESTION_ADD_ANSWER:
 			return {
 			...state,

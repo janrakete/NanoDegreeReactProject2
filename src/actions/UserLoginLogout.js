@@ -16,9 +16,9 @@ export function UserLogout() {
 
 export function UserLoginHandle(username) {
   return (dispatch, getState) => {
-    const { UsersReceive } = getState();
+    const { Users } = getState();
 
-    const user = Object.values(UsersReceive).find(
+    const user = Object.values(Users).find(
       (user) => user.id === username
     );
 

@@ -11,6 +11,7 @@ import Leaderboard from "./components/Leaderboard";
 import PollNew from "./components/PollNew";
 import FourZeroFour from "./components/FourZeroFour";
 import Dashboard from "./components/Dashboard";
+import PollsListCardDetails from "./components/PollsListCardDetails";
 
 import { InitialDataGet } from "./actions/InitialData";
 
@@ -35,7 +36,8 @@ function App({ dispatch, UserLoginLogout }) {
                   <Route path="/" exact element={<Dashboard />} />
                   <Route path="/add" element={<PollNew />} />
                   <Route path="/leaderboard" element={<Leaderboard />} />
-                  <Route element={FourZeroFour} />
+                  <Route path="/questions/:question_id" exact element={<PollsListCardDetails />} />
+                  <Route path="/404" exact element={<FourZeroFour />} />
               </Routes>
             </div>
           )
