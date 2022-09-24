@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import { PollAddQuestionHandle } from "../actions/Polls";
 
-function PollNew({ dispatch }) {
+function PollNew({ dispatch, UserLoginLogout }) {
 
 	const navigate = useNavigate();
 
   const PollHandleSubmit = (event) => {
     event.preventDefault();
-    dispatch(PollAddQuestionHandle(event.target.elements.option1.value, event.target.elements.option2.value));
+    dispatch(PollAddQuestionHandle(UserLoginLogout, event.target.elements.option1.value, event.target.elements.option2.value));
     navigate("/");
   };
 
@@ -38,7 +38,8 @@ function PollNew({ dispatch }) {
     )
   }
 
-const mapStateToProps = ({ }) => ({
+const mapStateToProps = ({ UserLoginLogout }) => ({
+	UserLoginLogout
 });
 
 export default connect(mapStateToProps)(PollNew);

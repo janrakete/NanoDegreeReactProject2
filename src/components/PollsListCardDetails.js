@@ -1,11 +1,18 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
 
 import { PollAddAnswerHandle } from "../actions/Polls";
 
-function PollsListCardDetails({dispatch, UserLoginLogout, Poll, PollAuthor}) {
+function PollsListCardDetails() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	
+	const { UserLoginLogout, Polls, Users } = useSelector(store => store);
+	const { question_id } = useParams();
+
+	const Poll = Object.values(Polls).find((question) => question.id === question_id);
+	const PollAuthor = Users[Poll.author];
 
 	if (!Poll) {
 		return <Navigate to="/404" />;
@@ -14,15 +21,14 @@ function PollsListCardDetails({dispatch, UserLoginLogout, Poll, PollAuthor}) {
 	const UserVotedForOptionOne = Poll.optionOne.votes.includes(UserLoginLogout.id);
 	const UserVotedForOptionTwo = Poll.optionTwo.votes.includes(UserLoginLogout.id);
 	const UserVoted = UserVotedForOptionOne || UserVotedForOptionTwo;
-
+	
 	let UserVotedFor = "";
 	if (UserVoted)
 		UserVotedFor = Poll[UserLoginLogout.answers[Poll.id]].text;
 
 	const PollHandleOptionSubmit = (event) => {
     	event.preventDefault();
-		dispatch(PollAddAnswerHandle(Poll.id, event.target.elements.optionName.value));		
-    	navigate("/");
+		dispatch(PollAddAnswerHandle(UserLoginLogout, Poll.id, event.target.elements.optionName.value));		
 	};
 
 	return (
@@ -67,15 +73,4 @@ function PollsListCardDetails({dispatch, UserLoginLogout, Poll, PollAuthor}) {
 	)
 }
 
-function mapStateToProps({ UserLoginLogout, Polls, Users }) {
-	const Poll = Object.values(Polls).find((question) => question.id === useParams().question_id);
-	const PollAuthor = Users[Poll.author];
-
-	return {
-		UserLoginLogout,
-		Poll,
-		PollAuthor
-	};
-}
-
-export default connect(mapStateToProps)(PollsListCardDetails);
+export default PollsListCardDetails;

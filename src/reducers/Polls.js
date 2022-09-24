@@ -1,6 +1,6 @@
 import { POLLS_RECEIVE, POLL_QUESTION_ADD, POLL_QUESTION_ADD_ANSWER } from '../actions/Polls';
 
-export default function Polls(state = null, action) {
+export default function Polls(state = {}, action) {
 	switch (action.type) {
 		case POLLS_RECEIVE:
 			return {

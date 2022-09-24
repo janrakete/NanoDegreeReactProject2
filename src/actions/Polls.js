@@ -28,10 +28,8 @@ function PollsQuestionAddAnswer(author, qid, answer) {
   };
 }
 
-export function PollAddQuestionHandle(option1, option2) {
+export function PollAddQuestionHandle(UserLoginLogout, option1, option2) {
   return (dispatch, getState) => {
-    const { UserLoginLogout } = getState();
-
     return APIPollQuestionAdd({optionOneText: option1, optionTwoText: option2, author: UserLoginLogout.id}).then(
       (question) => {
         dispatch(PollsQuestionAdd(question));
@@ -41,9 +39,8 @@ export function PollAddQuestionHandle(option1, option2) {
   };
 }
 
-export function PollAddAnswerHandle(questionId, answer) {
+export function PollAddAnswerHandle(UserLoginLogout, questionId, answer) {
   return (dispatch, getState) => {
-    const { UserLoginLogout } = getState();
     return APIPollQuestionAddAnswer(UserLoginLogout.id, questionId, answer).then(() => {
       dispatch(PollsQuestionAddAnswer(UserLoginLogout.id, questionId, answer));
       dispatch(UserAddAnswerTo(UserLoginLogout.id, questionId, answer));
