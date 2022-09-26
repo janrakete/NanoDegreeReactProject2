@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import PollsListCard from "./PollsListCard";
 
-function PollsList({ Polls, UserLoginLogout, props}) {
+function PollsList({ Polls, UserLoginLogout, Users, props}) {
 	return (
 		<div className="container">
 			{Polls.map((poll) => (
@@ -15,12 +15,13 @@ function PollsList({ Polls, UserLoginLogout, props}) {
 	)
 }
 
-function mapStateToProps({ Polls, UserLoginLogout }, props) {
+function mapStateToProps({ Polls, UserLoginLogout, Users }, props) {
 
 	let PollsAll = Object.values(Polls);
-	let UserLoggedInAnswers = UserLoginLogout ? Object.keys(UserLoginLogout.answers) : []
+	let UserLoggedInAnswers = UserLoginLogout ? Object.keys(Users[UserLoginLogout.id].answers) : []
+	//let UserLoggedInAnswers = UserLoginLogout ? Object.keys(UserLoginLogout.answers) : []
 
-	if (props.category == "unanswered")
+	if (props.category === "unanswered")
 		Polls = PollsAll.filter((poll) => !UserLoggedInAnswers.includes(poll.id)).sort((a, b) => b.timestamp - a.timestamp);
 	else
 		Polls = PollsAll.filter((poll) => UserLoggedInAnswers.includes(poll.id)).sort((a, b) => b.timestamp - a.timestamp);

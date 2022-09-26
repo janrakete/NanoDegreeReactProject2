@@ -16,7 +16,7 @@ function NavBar({ dispatch, UserLoginLogout }) {
   return (
 	<div>
 		<div className="navbar">
-			<div className="navbar-item navbar-brand">The Poll-utor</div>
+			<div className="navbar-item navbar-brand" id="navbar">The Poll-utor</div>
 			<div className="navbar-item">
 				<NavLink to="/" exact="true">
 					Dashboard

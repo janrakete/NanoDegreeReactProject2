@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useParams, useNavigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 import { PollAddAnswerHandle } from "../actions/Polls";
 
 function PollsListCardDetails() {
-	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
 	
 	const { UserLoginLogout, Polls, Users } = useSelector(store => store);
@@ -24,7 +24,7 @@ function PollsListCardDetails() {
 	
 	let UserVotedFor = "";
 	if (UserVoted)
-		UserVotedFor = Poll[UserLoginLogout.answers[Poll.id]].text;
+		UserVotedFor = Poll[Users[UserLoginLogout.id].answers[Poll.id]].text;
 
 	const PollHandleOptionSubmit = (event) => {
     	event.preventDefault();
