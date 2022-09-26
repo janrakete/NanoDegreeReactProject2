@@ -4,6 +4,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { createRoot } from "react-dom/client";
 import { createStore, compose } from "redux";
+import { BrowserRouter } from "react-router-dom";
 
 import reducers from "./reducers";
 import middlewares from "./middlewares";
@@ -19,6 +20,8 @@ const store = createStore(reducers, composeEnhancers(middlewares));
 
 root.render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
 );

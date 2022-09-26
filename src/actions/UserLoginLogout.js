@@ -22,7 +22,10 @@ export function UserLoginHandle(username) {
       (user) => user.id === username
     );
 
-    return dispatch(UserLogin(user));
+    if (user)
+      return dispatch(UserLogin(user));
+    else
+      return dispatch(UserLogin("error-unknown-user"));
   };
 }
 
