@@ -6,19 +6,26 @@ function Dashboard() {
 
   return (
 		<div className="container">
-			<div className="row">
-				<h1>Dashboard</h1>
-			</div>
 
-			<div className="row">
-				<h2>Unanswered polls</h2>
-				<PollsList category="unanswered" />
-			</div>
-			<div className="row">
-				<h2>Answered polls</h2>
-				<PollsList category="answered" />
-			</div>
+			<div className="tabbed">
+			   <input defaultChecked id="unanswered" type="radio" name="tabs" />
+			   <input id="answered" type="radio" name="tabs" />
 
+			   <nav>
+			      <label htmlFor="unanswered">Unanswered polls</label>
+			      <label htmlFor="answered">Answered polls</label>
+			   </nav>
+			   
+			   <figure>
+			      <div className="unanswered">
+			      	<PollsList category="unanswered" />
+			      </div>
+			      <div className="answered">
+			      	<PollsList category="answered" />	
+			      </div>
+			   </figure>
+
+			</div>
 		</div>    
     )
   }

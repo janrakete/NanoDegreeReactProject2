@@ -11,6 +11,10 @@ function PollsListCardDetails() {
 	const { UserLoginLogout, Polls, Users } = useSelector(store => store);
 	const { question_id } = useParams();
 
+	if (!Polls[question_id]) {
+    	return <Navigate to="/404" />;
+	}
+
 	const Poll = Object.values(Polls).find((question) => question.id === question_id);
 	const PollAuthor = Users[Poll.author];
 

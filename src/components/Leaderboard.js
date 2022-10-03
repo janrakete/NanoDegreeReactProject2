@@ -40,7 +40,7 @@ function Leaderboard({ Users }) {
 
 function mapStateToProps({ Users }) {
   return {
-    Users: Object.values(Users).sort((a, b) => Object.keys(b.answers).length - Object.keys(a.answers).length),
+    Users: Object.values(Users).sort((a, b) => (Object.keys(b.answers).length + Object.keys(b.questions).length) - (Object.keys(a.answers).length + Object.keys(a.questions).length)),
   };
 }
 

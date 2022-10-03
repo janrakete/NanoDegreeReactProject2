@@ -100,3 +100,61 @@ a {
   color:  white;
   text-decoration: none;
 }
+
+.tabbed figure { 
+   display: block; 
+   margin-left: 0; 
+   clear: both;
+}
+
+.tabbed > input,
+.tabbed figure > div {
+  display: none;
+}
+
+.tabbed figure>div {
+  padding: 20px;
+  width: 100%;
+  background: #fff;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+  color: #444;
+}
+
+#unanswered:checked ~ figure .unanswered,
+#answered:checked ~ figure .answered {
+  display: block;
+}
+
+nav label {
+   float: left;
+   padding: 15px 15px;
+   border-top: 1px solid silver;
+   border-right: 1px solid silver;
+   background: white;
+   color: #000;
+   cursor: pointer;
+}
+
+nav label:nth-child(1) {
+  border-left: 1px solid silver;
+}
+
+nav label:hover {
+  background: lime;
+  color:  black;
+}
+
+nav label:active {
+  background: #000;
+  color:  white;
+}
+
+#unanswered:checked ~ nav label[for="unanswered"],
+#tab3:checked ~ nav label[for="answered"] {
+  background: DeepPink;
+  color: #000;
+  position: relative;
+  border-bottom: none;
+  font-weight:  bold;
+}
